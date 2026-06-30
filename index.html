@@ -123,7 +123,6 @@
     .section-label,
     .package-kicker,
     .package-number,
-    .price-label,
     .notes-title,
     .footer-label,
     .table-label {
@@ -354,9 +353,7 @@
     }
 
     .package-card.featured .package-kicker,
-    .package-card.featured .package-number,
-    .package-card.featured .price-label,
-    .package-card.featured .option-note {
+    .package-card.featured .package-number {
       color: var(--gold-soft);
     }
 
@@ -426,52 +423,77 @@
       background: var(--gold);
     }
 
-    .price-options {
+    .package-pricing {
       display: grid;
-      gap: 12px;
+      gap: 10px;
       margin-top: 22px;
-    }
-
-    .price-option {
-      padding: 16px 0 0;
+      padding-top: 18px;
       border-top: 1px solid var(--line);
     }
 
-    .price-option:first-child {
-      padding-top: 0;
-      border-top: 0;
-    }
-
-    .option-main {
+    .price-row {
       display: flex;
-      align-items: end;
+      align-items: center;
       justify-content: space-between;
-      gap: 18px;
+      gap: 14px;
+      color: var(--ink-soft);
+      font-size: 0.88rem;
     }
 
-    .option-note {
-      margin-top: 6px;
-      color: var(--sage);
-      font-size: 0.8rem;
-      font-weight: 800;
+    .price-row span {
+      font-weight: 700;
     }
 
-    .price-label {
-      padding-bottom: 4px;
-      color: var(--muted);
-    }
-
-    .price {
+    .price-row strong {
+      flex: 0 0 auto;
       color: var(--ink);
-      font-family: "Playfair Display", Georgia, serif;
-      font-size: clamp(2rem, 10vw, 2.5rem);
-      font-weight: 600;
-      line-height: 1;
+      font-weight: 800;
       white-space: nowrap;
     }
 
-    .package-card.featured .price {
+    .price-row.discount strong {
+      color: var(--sage);
+    }
+
+    .price-row.total {
+      align-items: end;
+      margin-top: 6px;
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+    }
+
+    .price-row.total span {
+      color: var(--gold);
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .price-row.total strong {
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(2rem, 10vw, 2.55rem);
+      font-weight: 600;
+      line-height: 1;
+    }
+
+    .package-card.featured .package-pricing,
+    .package-card.featured .price-row.total {
+      border-top-color: rgba(234, 219, 195, 0.22);
+    }
+
+    .package-card.featured .price-row {
+      color: rgba(255, 255, 255, 0.72);
+    }
+
+    .package-card.featured .price-row strong,
+    .package-card.featured .price-row.total strong {
       color: #fff;
+    }
+
+    .package-card.featured .price-row.discount strong,
+    .package-card.featured .price-row.total span {
+      color: var(--gold-soft);
     }
 
     .package-card.featured .currency {
@@ -770,12 +792,6 @@
         padding-left: 20px;
       }
 
-      .option-main {
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 10px;
-      }
-
       .service-bubble {
         border-radius: 22px;
         padding: 22px 20px;
@@ -839,9 +855,106 @@
       </div>
     </header>
 
+    <section aria-labelledby="paquetes-title">
+      <div class="section-label" id="paquetes-title">Opción 1 · Colección Bride</div>
+      <p class="section-intro">La recomendación principal: bridal shower, save the date y boda Full Day en una sola reserva, con el beneficio del 10% ya desglosado.</p>
+
+      <div class="package-list">
+        <article class="package-card">
+          <div class="package-top">
+            <p class="package-kicker">Paquete I</p>
+            <span class="package-number">01</span>
+          </div>
+          <h2 class="package-title">Bride Foto</h2>
+          <p class="package-subtitle">Bridal shower + Save the date + Boda Full Day con fotografía.</p>
+          <ul class="feature-list">
+            <li>Incluye bridal shower de 3 horas</li>
+            <li>Incluye sesión save the date</li>
+            <li>Boda Full Day 12 horas con 1 fotógrafo</li>
+            <li>Galerías digitales privadas con fotografías finales editadas</li>
+          </ul>
+          <div class="package-pricing" aria-label="Desglose de precio Bride Foto">
+            <div class="price-row">
+              <span>Precio regular</span>
+              <strong>$20,500 MXN</strong>
+            </div>
+            <div class="price-row discount">
+              <span>Descuento 10%</span>
+              <strong>-$2,050 MXN</strong>
+            </div>
+            <div class="price-row total">
+              <span>Total especial</span>
+              <strong>$18,450<span class="currency">MXN</span></strong>
+            </div>
+          </div>
+        </article>
+
+        <article class="package-card featured">
+          <span class="package-badge">Recomendado</span>
+          <div class="package-top">
+            <p class="package-kicker">Paquete II</p>
+            <span class="package-number">02</span>
+          </div>
+          <h2 class="package-title">Bride Doble Enfoque</h2>
+          <p class="package-subtitle">Bridal shower + Save the date + Boda Full Day con fotografía y video.</p>
+          <ul class="feature-list">
+            <li>Incluye bridal shower de 3 horas</li>
+            <li>Incluye sesión save the date</li>
+            <li>Boda Full Day 12 horas con 1 fotógrafo y 1 videógrafo</li>
+            <li>Incluye galería fotográfica, video resumen y documental</li>
+            <li>Dron incluido sujeto a clima, permisos y restricciones de sede</li>
+          </ul>
+          <div class="package-pricing" aria-label="Desglose de precio Bride Doble Enfoque">
+            <div class="price-row">
+              <span>Precio regular</span>
+              <strong>$34,500 MXN</strong>
+            </div>
+            <div class="price-row discount">
+              <span>Descuento 10%</span>
+              <strong>-$3,450 MXN</strong>
+            </div>
+            <div class="price-row total">
+              <span>Total especial</span>
+              <strong>$31,050<span class="currency">MXN</span></strong>
+            </div>
+          </div>
+        </article>
+
+        <article class="package-card">
+          <div class="package-top">
+            <p class="package-kicker">Paquete III</p>
+            <span class="package-number">03</span>
+          </div>
+          <h2 class="package-title">Bride Completo</h2>
+          <p class="package-subtitle">Bridal shower + Save the date + Boda Full Day con foto, video y storyteller.</p>
+          <ul class="feature-list">
+            <li>Incluye bridal shower de 3 horas</li>
+            <li>Incluye sesión save the date</li>
+            <li>Boda Full Day 12 horas con fotógrafo, videógrafo y creador de contenido</li>
+            <li>Incluye galería, video resumen, documental, dron y contenido vertical</li>
+            <li>Storyteller incluye reel recap, 3 reels cortos e historias</li>
+          </ul>
+          <div class="package-pricing" aria-label="Desglose de precio Bride Completo">
+            <div class="price-row">
+              <span>Precio regular</span>
+              <strong>$41,500 MXN</strong>
+            </div>
+            <div class="price-row discount">
+              <span>Descuento 10%</span>
+              <strong>-$4,150 MXN</strong>
+            </div>
+            <div class="price-row total">
+              <span>Total especial</span>
+              <strong>$37,350<span class="currency">MXN</span></strong>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
     <section aria-labelledby="individuales-title">
-      <div class="section-label" id="individuales-title">Opción 1 · Servicios Individuales</div>
-      <p class="section-intro">Una selección flexible para cubrir momentos puntuales sin perder una línea visual elegante y cuidada.</p>
+      <div class="section-label" id="individuales-title">Opción 2 · Servicios Individuales</div>
+      <p class="section-intro">Referencia por separado para comparar cada servicio antes de elegir una colección completa.</p>
 
       <div class="service-cloud">
         <article class="service-bubble small primary">
@@ -917,91 +1030,6 @@
             <div class="service-rate">
               <span>Base 5 horas</span>
               <strong>$4,500 MXN</strong>
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section aria-labelledby="paquetes-title">
-      <div class="section-label" id="paquetes-title">Opción 2 · Colección Bride</div>
-      <p class="section-intro">La experiencia completa: bridal shower, save the date y boda Full Day bajo una sola dirección visual, con 10% de descuento aplicado.</p>
-
-      <div class="package-list">
-        <article class="package-card">
-          <div class="package-top">
-            <p class="package-kicker">Paquete I</p>
-            <span class="package-number">01</span>
-          </div>
-          <h2 class="package-title">Bride Foto</h2>
-          <p class="package-subtitle">Para conservar bridal shower, save the date y boda en fotografía con una galería cuidada.</p>
-          <ul class="feature-list">
-            <li>Bridal shower: 3 horas de fotografía, detalles, ambiente, familia e invitadas</li>
-            <li>Save the date: sesión fotográfica de pareja con galería digital</li>
-            <li>Boda: cobertura fotográfica con 1 fotógrafo</li>
-            <li>Incluye getting ready, ceremonia, recepción, sesión de novios, familia, detalles y fiesta dentro de las horas contratadas</li>
-            <li>Entrega en galerías digitales privadas con fotografías finales editadas</li>
-          </ul>
-          <div class="price-options">
-            <div class="price-option">
-              <div class="option-main">
-                <p class="price-label">Full Day 12 horas</p>
-                <p class="price">$18,450<span class="currency">MXN</span></p>
-              </div>
-              <p class="option-note">Precio regular $20,500 MXN · 10% de descuento aplicado</p>
-            </div>
-          </div>
-        </article>
-
-        <article class="package-card featured">
-          <span class="package-badge">Recomendado</span>
-          <div class="package-top">
-            <p class="package-kicker">Paquete II</p>
-            <span class="package-number">02</span>
-          </div>
-          <h2 class="package-title">Bride Doble Enfoque</h2>
-          <p class="package-subtitle">La opción más equilibrada: eventos previos en foto y boda con fotografía + video.</p>
-          <ul class="feature-list">
-            <li>Bridal shower: 3 horas de fotografía, detalles, ambiente, familia e invitadas</li>
-            <li>Save the date: sesión fotográfica de pareja con galería digital</li>
-            <li>Boda: fotografía + video coordinados bajo una misma mirada visual</li>
-            <li>Incluye galería fotográfica, video resumen de 3 a 5 minutos y documental de 15 a 25 minutos</li>
-            <li>Dron incluido sujeto a clima, permisos y restricciones de sede</li>
-            <li>Equipo de boda incluido: 1 fotógrafo y 1 videógrafo</li>
-          </ul>
-          <div class="price-options">
-            <div class="price-option">
-              <div class="option-main">
-                <p class="price-label">Full Day 12 horas</p>
-                <p class="price">$31,050<span class="currency">MXN</span></p>
-              </div>
-              <p class="option-note">Precio regular $34,500 MXN · 10% de descuento aplicado</p>
-            </div>
-          </div>
-        </article>
-
-        <article class="package-card">
-          <div class="package-top">
-            <p class="package-kicker">Paquete III</p>
-            <span class="package-number">03</span>
-          </div>
-          <h2 class="package-title">Bride Completo</h2>
-          <p class="package-subtitle">Para cubrir recuerdos formales, video y contenido social del día de la boda.</p>
-          <ul class="feature-list">
-            <li>Bridal shower: 3 horas de fotografía, detalles, ambiente, familia e invitadas</li>
-            <li>Save the date: sesión fotográfica de pareja con galería digital</li>
-            <li>Boda: fotografía, video y storyteller para recuerdos formales y contenido social</li>
-            <li>Incluye galería fotográfica, video resumen, documental, dron y contenido vertical</li>
-            <li>Storyteller incluye reel recap, 3 reels cortos, historias y entrega rápida</li>
-            <li>Equipo de boda incluido: fotógrafo, videógrafo y creador de contenido</li>
-          </ul>
-          <div class="price-options">
-            <div class="price-option">
-              <div class="option-main">
-                <p class="price-label">Full Day 12 horas</p>
-                <p class="price">$37,350<span class="currency">MXN</span></p>
-              </div>
-              <p class="option-note">Precio regular $41,500 MXN · 10% de descuento aplicado</p>
             </div>
           </div>
         </article>
