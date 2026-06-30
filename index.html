@@ -67,37 +67,23 @@
     .header {
       position: relative;
       overflow: hidden;
+      display: grid;
+      grid-template-columns: minmax(280px, 0.78fr) minmax(0, 1.22fr);
       margin-bottom: 54px;
-      padding: 46px 34px 42px;
       border: 1px solid rgba(176, 138, 80, 0.42);
       border-radius: 8px;
-      background:
-        linear-gradient(135deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0) 32%),
-        linear-gradient(180deg, rgba(35, 31, 27, 0.98), rgba(18, 17, 15, 0.98));
-      box-shadow: 0 28px 70px rgba(26, 26, 26, 0.16);
-      color: #fff;
-      text-align: center;
+      background: rgba(255, 255, 255, 0.56);
+      box-shadow: 0 28px 70px rgba(26, 26, 26, 0.1);
+      color: var(--ink);
+      text-align: left;
     }
 
     .header::before {
-      position: absolute;
-      inset: 18px;
-      pointer-events: none;
-      content: "";
-      border: 1px solid rgba(234, 219, 195, 0.32);
-      border-radius: 6px;
+      display: none;
     }
 
     .header::after {
-      position: absolute;
-      right: -60px;
-      bottom: -100px;
-      width: 280px;
-      height: 280px;
-      pointer-events: none;
-      content: "";
-      border: 1px solid rgba(234, 219, 195, 0.18);
-      transform: rotate(45deg);
+      display: none;
     }
 
     .header > * {
@@ -113,8 +99,39 @@
       opacity: 0.95;
     }
 
-    .header .brand-logo {
+    .cover-brand .brand-logo {
       filter: invert(1) brightness(1.25);
+    }
+
+    .cover-brand {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 520px;
+      padding: 42px 32px;
+      background:
+        linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0) 34%),
+        var(--charcoal);
+      color: #fff;
+    }
+
+    .cover-brand .brand-logo {
+      width: min(100%, 255px);
+      margin: 0 auto;
+    }
+
+    .cover-brand-note {
+      padding-top: 34px;
+      border-top: 1px solid rgba(234, 219, 195, 0.28);
+    }
+
+    .cover-brand-note p {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.82rem;
+    }
+
+    .cover-content {
+      padding: 54px 48px 46px;
     }
 
     .brand-tagline,
@@ -139,14 +156,14 @@
 
     .doc-title {
       position: relative;
-      margin-top: 32px;
-      color: var(--gold-soft);
+      margin-top: 0;
+      color: var(--gold);
     }
 
     .year {
       position: relative;
-      margin-top: 12px;
-      color: #fff;
+      margin-top: 10px;
+      color: var(--ink);
       font-family: "Playfair Display", Georgia, serif;
       font-size: 2.35rem;
       font-weight: 500;
@@ -156,32 +173,31 @@
     .quote-copy {
       position: relative;
       max-width: 62ch;
-      margin: 26px auto 0;
-      color: rgba(255, 255, 255, 0.76);
+      margin: 22px 0 0;
+      color: var(--ink-soft);
       font-size: 0.94rem;
     }
 
     .luxury-statement {
       position: relative;
-      max-width: 760px;
-      margin: 28px auto 0;
-      padding: 26px 28px;
-      border-top: 1px solid rgba(234, 219, 195, 0.38);
-      border-bottom: 1px solid rgba(234, 219, 195, 0.38);
+      max-width: 680px;
+      margin: 42px 0 0;
+      padding: 0 0 28px;
+      border-bottom: 1px solid var(--line);
     }
 
     .luxury-title {
-      color: #fff;
+      color: var(--ink);
       font-family: "Playfair Display", Georgia, serif;
-      font-size: clamp(2.3rem, 8vw, 4.6rem);
+      font-size: clamp(3rem, 8vw, 5.2rem);
       font-weight: 500;
       line-height: 0.98;
     }
 
     .luxury-copy {
-      max-width: 52ch;
-      margin: 18px auto 0;
-      color: rgba(255, 255, 255, 0.74);
+      max-width: 56ch;
+      margin: 20px 0 0;
+      color: var(--ink-soft);
       font-size: 0.98rem;
     }
 
@@ -191,16 +207,16 @@
       flex-wrap: wrap;
       justify-content: center;
       max-width: 840px;
-      margin: 24px auto 0;
+      margin: 26px 0 0;
       padding: 14px 0;
-      border-top: 1px solid rgba(234, 219, 195, 0.3);
-      border-bottom: 1px solid rgba(234, 219, 195, 0.3);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
       list-style: none;
     }
 
     .quote-meta li {
       padding: 0 18px;
-      color: rgba(255, 255, 255, 0.62);
+      color: var(--muted);
       font-size: 0.7rem;
       font-weight: 800;
       letter-spacing: 0.16em;
@@ -208,7 +224,7 @@
     }
 
     .quote-meta li + li {
-      border-left: 1px solid rgba(234, 219, 195, 0.26);
+      border-left: 1px solid var(--line);
     }
 
     .contact-actions {
@@ -239,15 +255,15 @@
     }
 
     .header .contact-link {
-      border-color: rgba(255, 255, 255, 0.74);
-      color: #fff;
+      border-color: var(--ink);
+      color: var(--ink);
     }
 
     .header .contact-link.primary,
     .header .contact-link:hover {
-      border-color: #fff;
-      background: #fff;
-      color: var(--ink);
+      border-color: var(--ink);
+      background: var(--ink);
+      color: #fff;
     }
 
     .contact-link.primary,
@@ -753,6 +769,28 @@
     }
 
     @media (max-width: 760px) {
+      .header {
+        grid-template-columns: 1fr;
+      }
+
+      .cover-brand {
+        min-height: auto;
+        padding: 34px 28px;
+      }
+
+      .cover-brand .brand-logo {
+        width: min(68vw, 220px);
+        margin-bottom: 34px;
+      }
+
+      .cover-content {
+        padding: 36px 28px 34px;
+      }
+
+      .luxury-statement {
+        margin-top: 30px;
+      }
+
       .service-cloud {
         grid-template-columns: 1fr;
       }
@@ -782,8 +820,10 @@
         padding: 28px 18px 52px;
       }
 
-      .header {
-        padding-top: 24px;
+      .cover-brand,
+      .cover-content {
+        padding-right: 22px;
+        padding-left: 22px;
       }
 
       .package-card,
@@ -835,29 +875,36 @@
 <body>
   <main class="container">
     <header class="header">
-      <img class="brand-logo" src="assets/logo-doble-enfoque.webp" alt="Doble Enfoque Fotografía">
-      <p class="brand-tagline">Fotografía · Video · Storyteller</p>
-      <p class="doc-title">Cotización Especial · Paquete Bride</p>
-      <p class="year">2026</p>
-      <div class="luxury-statement">
-        <p class="luxury-title">Una boda de lujo merece una cobertura igual de profesional.</p>
-        <p class="luxury-copy">Cada etapa se documenta con dirección visual, cuidado editorial y una entrega pensada para sentirse elegante de principio a fin.</p>
+      <div class="cover-brand">
+        <img class="brand-logo" src="assets/logo-doble-enfoque.webp" alt="Doble Enfoque Fotografía">
+        <div class="cover-brand-note">
+          <p class="brand-tagline">Fotografía · Video · Storyteller</p>
+          <p>Dirección visual para bodas y celebraciones con intención.</p>
+        </div>
       </div>
-      <p class="quote-copy">Propuesta para documentar bridal shower, save the date y boda con una misma línea visual. Puedes elegir servicios individuales o un paquete completo con precio preferencial al reservar varias fechas.</p>
-      <ul class="quote-meta" aria-label="Información de cotización">
-        <li>Hermosillo, Sonora</li>
-        <li>Precios en MXN</li>
-        <li>No incluyen IVA</li>
-      </ul>
-      <div class="contact-actions" aria-label="Contacto">
-        <a class="contact-link primary" href="https://wa.me/526623183894?text=Hola%2C%20quiero%20apartar%20mi%20Paquete%20Bride%20con%20Doble%20Enfoque." target="_blank" rel="noopener">WhatsApp</a>
-        <a class="contact-link" href="https://www.instagram.com/dobleenfoque.fotografia/" target="_blank" rel="noopener">Instagram</a>
+      <div class="cover-content">
+        <p class="doc-title">Propuesta privada · Paquete Bride</p>
+        <p class="year">2026</p>
+        <div class="luxury-statement">
+          <p class="luxury-title">Una boda de lujo merece una cobertura igual de profesional.</p>
+          <p class="luxury-copy">Esta propuesta reúne los momentos previos y el día de la boda bajo una misma mirada: elegante, puntual y pensada para que cada entrega se sienta a la altura de la celebración.</p>
+        </div>
+        <p class="quote-copy">La recomendación es reservar una colección completa para mantener continuidad visual desde el bridal shower y el save the date hasta la boda Full Day. Los servicios individuales quedan como referencia para comparar con claridad.</p>
+        <ul class="quote-meta" aria-label="Información de cotización">
+          <li>Hermosillo, Sonora</li>
+          <li>Precios en MXN</li>
+          <li>No incluyen IVA</li>
+        </ul>
+        <div class="contact-actions" aria-label="Contacto">
+          <a class="contact-link primary" href="https://wa.me/526623183894?text=Hola%2C%20quiero%20apartar%20mi%20Paquete%20Bride%20con%20Doble%20Enfoque." target="_blank" rel="noopener">WhatsApp</a>
+          <a class="contact-link" href="https://www.instagram.com/dobleenfoque.fotografia/" target="_blank" rel="noopener">Instagram</a>
+        </div>
       </div>
     </header>
 
     <section aria-labelledby="paquetes-title">
-      <div class="section-label" id="paquetes-title">Opción 1 · Colección Bride</div>
-      <p class="section-intro">La recomendación principal: bridal shower, save the date y boda Full Day en una sola reserva, con el beneficio del 10% ya desglosado.</p>
+      <div class="section-label" id="paquetes-title">Colección Recomendada</div>
+      <p class="section-intro">Tres formas de reservar bridal shower, save the date y boda Full Day en una sola experiencia, con el beneficio del 10% ya desglosado.</p>
 
       <div class="package-list">
         <article class="package-card">
@@ -953,7 +1000,7 @@
     </section>
 
     <section aria-labelledby="individuales-title">
-      <div class="section-label" id="individuales-title">Opción 2 · Servicios Individuales</div>
+      <div class="section-label" id="individuales-title">Servicios Individuales</div>
       <p class="section-intro">Referencia por separado para comparar cada servicio antes de elegir una colección completa.</p>
 
       <div class="service-cloud">
